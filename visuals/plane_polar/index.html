@@ -1,0 +1,113 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Plane Polar</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content="This visualisation shows the area element and the basis vectors of polar coordinate in 2D, in order to help understanding their corresponding ones in 3D. Done by Mangle Kuo for Physics: Mathematics (Vector Calculus) (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				
+    <div class="container">
+        <div class="row">
+            <!-- Graph -->
+            <div class="six columns">
+                <h1>Plane Polar:</h1>
+                <div id='graph' style="width:450px; height:450px;"></div>
+            </div>
+
+            <!--Bottons-->
+            <div class="six columns">
+                <!--Main Options-->
+                <ul class="tab-nav">
+                    <li><a class="button active" href="#basis">Basis Vectors</a></li>
+                    <li><a class="button" href="#area">Area Element</a></li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <h5 style="border-left: solid 5px rgb(219,209,0); padding-left: 8px;">ρ-coordinate:</h5>
+                    <label class="sliderTitle">ρ:&nbsp;
+                        <span id="rhoControllerDisplay" data-unit="">0</span>
+                    </label>
+                    <label class="slider">
+                        <input id="rhoController" class="inputs" type="range" value="0" min="0" max="4" step="0.1"/>
+                        <span class="sliderMin">0</span><span class="sliderMax">4</span></label>
+                    <h5 style="border-left: solid 5px rgb(182,109,255); padding-left: 8px;">φ-coordinate:</h5>
+                    <label class="sliderTitle">φ:&nbsp;
+                        <span id="phiControllerDisplayA1" data-unit="π rad">0π rad</span>&nbsp;or&nbsp;
+                        <span id="phiControllerDisplayA2" data-unit="º">0º</span>
+                    </label>
+                    <label class="slider">
+                        <input id="phiController" class="inputs" type="range" value="0" min="0" max="2" step="0.125"/>
+                        <span class="sliderMin">0</span><span class="sliderMax">2π</span>
+                    </label>
+
+                    <div class="tab-pane active" id="basis"></div>
+
+                    <div class="tab-pane" id="area">
+                        <label class="checkbox">
+                            <input type="checkbox" id="blackText" value="on"/><span for="checkbox"></span>
+                        </label>
+                        <label class="checkboxTitle">Show Black Label</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+				
+				
+<script type="text/javascript" src="/assets/js/numeric-1.2.6.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.3/math.min.js" ></script>
+<script type="text/javascript" src="/visuals/plane_polar/scripts/objects.js"></script>
+<script type="text/javascript" src="/visuals/plane_polar/scripts/polar.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

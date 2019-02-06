@@ -1,0 +1,99 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Cyclotron</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content=" Done by Mangle Kuo for Physics: Electricity and Magnetism 1 (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				<div class="container">
+    <h1>Cyclotron</h1>
+
+    <div class="row">
+        <div class="eight columns">
+            <div style="width:600px; height:600px" id="particle"></div>
+        </div>
+        <div class="four columns">
+            <div id="interface">
+                <div id="B-slider">
+                    <label for="B" class="sliderTitle">B field strength:</label>
+                    <input type="range" id="B" name="B" min="0" max="10" step = "2" value="4">
+                    <span class="sliderMin">0</span><span class="sliderMax">10</span>
+                </div>
+
+                <div id="E-slider">
+                    <label for="E" class="sliderTitle">E field strength:</label>
+                    <input type="range" id="E" name="E" min="10" max="50" step="10" value="40">
+                    <span class="sliderMin">10</span><span class="sliderMax">50</span>
+                </div>
+                
+                <div id="M-slider">
+                    <label for="M" class="sliderTitle">Mass of particle:</label>
+                    <input type="range" id="M" name="M" min="1" max="5" step="1" value="3">
+                    <span class="sliderMin">1</span><span class="sliderMax">5</span>
+                </div>
+                
+                <br>
+                <br>
+
+                <div id="scatter_btn"></div>
+                <input id="run" onclick="onToggleRun()" value="Play" type="button">
+                <input id="reset" onclick="onReset()" value="Reset" type="button">
+            </div>
+        </div>
+    </div>
+    
+</div>
+				
+				
+<script type="text/javascript" src="/visuals/cyclotron/scripts/cyclotron.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

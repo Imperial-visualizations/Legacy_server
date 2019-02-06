@@ -1,0 +1,146 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Volume Element</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content="This visualisation shows volume elements in Cylindrical and Spherical Coordinates Systems (Riley Diagrams) and is desined to help you with triple integration. Done by Mangle Kuo for Physics: Mathematics (Vector Calculus) (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				   <div class="container">
+        <div class="row">
+            <!-- Graph -->
+            <div class="six columns">
+                <h1>Volume element:</h1>
+                <div id='graph' style="width:450px; height:450px;"></div>
+            </div>
+
+            <!--Bottons-->
+            <div class="six columns">
+                <!--Main Options-->
+                <ul class="tab-nav">
+                    <li><a class="button active" href="#cylin">Cylindrical</a></li>
+                    <li><a class="button" href="#spher">Spherical</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="cylin">
+                        <h5 style="border-left: solid 5px rgb(219,209,0); padding-left: 8px;">ρ-coordinate(index)</h5>
+                        <label class="sliderTitle">ρ:&nbsp;
+                            <span id="rhoControllerDisplay" data-unit="">0</span>
+                        </label>
+                        <label class="slider">
+                            <input id="rhoController" class="inputs" type="range" value="3" min="3" max="4.4" step="0.1"/>
+                            <span class="sliderMin">3</span><span class="sliderMax">4.4</span>
+                        </label>
+                        <h5 style="border-left: solid 5px rgb(182,109,255); padding-left: 8px;">φ-coordinate(middle):</h5>
+                        <label class="sliderTitle">φ:&nbsp;
+                            <span id="phiControllerDisplayA1" data-unit="π rad">0π rad</span>&nbsp;or&nbsp;
+                            <span id="phiControllerDisplayA2" data-unit="º">0º</span>
+                        </label>
+                        <label class="slider">
+                            <input id="phiController" class="inputs" type="range" value="0" min="0" max="2" step="0.125"/>
+                            <span class="sliderMin">0</span><span class="sliderMax">2π</span>
+                        </label>
+                        <h5 style="border-left: solid 5px rgb(0,146,146); padding-left: 8px;">z-coordinate(thumb):</h5>
+                        <label class="sliderTitle">z:&nbsp;
+                            <span id="z1ControllerDisplay" data-unit="">1</span>
+                        </label>
+                        <label class="slider">
+                            <input id="z1Controller" class="inputs" type="range" value="1" min="0" max="4" step="0.1"/>
+                            <span class="sliderMin">0</span><span class="sliderMax">4</span>
+                        </label>
+                    </div>
+                    <div class="tab-pane" id="spher">
+                        <h5 style="border-left: solid 5px rgb(0,146,146); padding-left: 8px;">r-coordinate(thumb)</h5>
+                        <label class="sliderTitle">r:&nbsp;
+                            <span id="rControllerDisplay" data-unit="">0</span>
+                        </label>
+                        <label class="slider">
+                            <input id="rController" class="inputs" type="range" value="4" min="4" max="5.2" step="0.1"/>
+                            <span class="sliderMin">4</span><span class="sliderMax">5.2</span>
+                        </label>
+                        <h5 style="border-left: solid 5px rgb(219,209,0); padding-left: 8px;">θ-coordinate(index):</h5>
+                        <label class="sliderTitle">θ:&nbsp;
+                            <span id="thetaControllerDisplayA1" data-unit="π rad">0π rad</span>&nbsp;or&nbsp;
+                            <span id="thetaControllerDisplayA2" data-unit="º">0º</span>
+                        </label>
+                        <label class="slider">
+                            <input id="thetaController" class="inputs" type="range" value="0" min="0" max="1" step="0.125"/>
+                            <span class="sliderMin">0</span><span class="sliderMax">1π</span>
+                        </label>
+                        <h5 style="border-left: solid 5px rgb(182,109,255); padding-left: 8px;">φ-coordinate(middle):</h5>
+                        <label class="sliderTitle">φ:&nbsp;
+                            <span id="phi1ControllerDisplayA1" data-unit="π rad">0π rad</span>&nbsp;or&nbsp;
+                            <span id="phi1ControllerDisplayA2" data-unit="º">0º</span>
+                        </label>
+                        <label class="slider">
+                            <input id="phi1Controller" class="inputs" type="range" value="0" min="0" max="2" step="0.125"/>
+                            <span class="sliderMin">0</span><span class="sliderMax">2π</span>
+                        </label>
+                    </div>
+
+                    <label class="checkbox">
+                        <input type="checkbox" id="blackText" value="on"/><span for="checkbox"></span>
+                    </label>
+                    <label class="checkboxTitle">Show Black Label</label>
+                </div>
+                <img src=assets/RHR.png width=150 height=150>
+            </div>
+        </div>
+    </div>
+				
+				
+<script type="text/javascript" src="/assets/js/numeric-1.2.6.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.3/math.min.js" ></script>
+<script type="text/javascript" src="/visuals/volume_element/scripts/objects.js"></script>
+<script type="text/javascript" src="/visuals/volume_element/scripts/riley.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

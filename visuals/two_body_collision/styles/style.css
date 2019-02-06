@@ -1,0 +1,18 @@
+        #canvasWrapper{
+            width: 100%;
+            margin: 0 auto;
+        }
+        input[type=range]{
+        }
+        .velocityDisplay{
+        }
+        .ball1Title{
+            padding-left: 8px;
+            font-weight:400;
+            border-left: 8px solid #E9003A;
+        }
+        .ball2Title{
+            padding-left: 8px;
+            font-weight:400;
+            border-left: 8px solid #00AEF2;
+        }

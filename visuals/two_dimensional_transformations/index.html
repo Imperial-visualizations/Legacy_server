@@ -1,0 +1,179 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Two Dimensional Transformations</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content=" Done by Mangle Kuo for Physics: Mathematics (Matrices) (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				<div class="container">
+    <div class="row">
+        <div class="six columns">
+            <h1>2D Transformations</h1>
+            <div id='graph' style="width:400px; height:400px;"></div>
+            <h6>Overall Transformation:</h6>
+            <p id="overallMatrix"></p>
+        </div>
+
+        <div class="six columns">
+
+            <ul class="tab-nav">
+                <li><a class="button active" href="#skew">Skew</a></li>
+                <li><a class="button" href="#scale">Scale</a></li>
+                <li><a class="button" href="#rotate">Rotate</a></li>
+                <li><a class="button" href="#custom">Custom</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="skew">
+                    <div class="sliderSkew">
+                        <label class="radioTitle">Axis: </label>
+                        <label class="radio" for="x">
+                            <input type="radio" name="axis" value="x" id="x" checked />
+                            <span>x</span>
+                        </label>
+                        <label class="radio" for="y">
+                            <input type="radio" name="axis" value="y" id="y"/>
+                            <span>y</span>
+                    </div>
+                <div class="sliderSkew">
+                    <h4>Skew Matrix:</h4>
+                    <p id="skewmatrix"></p>
+                    <input class="button-primary" type="submit" value="Apply" onclick="plotSkew()">
+                    <input type="button" value="Reset" onclick="resetStuff()" >
+                </div>
+
+
+
+                </div>
+
+                <div class="tab-pane" id="rotate">
+                <div class="sliderRotate">
+                    <label class="sliderTitle" >Rotation Angle (θ):</label>
+                        <label>
+                            <input id="rotateID" type ="range" value="0" min ="0" max="2" step ="0.05" oninput="rotateMatrix()" data-unit="radians"/>
+                            <span class="sliderMin">0</span><span class="sliderMax">2π rad</span>
+                        </label>
+                </div>
+                <div class="sliderRotate">
+                    <p id="showtheta"></p>
+
+                    <h4>Rotation Matrix:</h4>
+                    <div class="row">
+                        <div class="six columns">
+                            <h5>Trigonometric Form</h5>
+                            <p id="rotatematrix2"></p>
+                        </div>
+                        <div class="six columns">
+                            <h5>Decimal Form</h5>
+                            <p id="rotatematrix"></p><br>
+                        </div>
+                    </div>
+                        <input class="button-primary" type="submit" value="Apply" onclick="plotRotate()">
+                        <input type="button" value="Reset" onclick="resetStuff()">
+                    </div>
+
+
+
+              </div>
+
+              <div class="tab-pane" id="scale">
+                  <div class="sliderScale">
+                      <label class="sliderTitle">x-scale: <span id="scale1IDDisplay">1</span></label>
+                      <label>
+                          <input id="scale1ID" type ="range" value="1" min ="-4" max="4" step ="0.1" oninput="scaleMatrix()"/>
+                          <span class="sliderMin">-4</span><span class="sliderMax">4</span>
+                      </label>
+                  </div>
+                  <div class="sliderScale">
+                      <label class="sliderTitle">y-scale: <span id="scale2IDDisplay">1</span></label>
+                      <label>
+                          <input id="scale2ID" type ="range" value="1" min ="-4" max="4" step ="0.1" oninput="scaleMatrix()"/>
+                          <span class="sliderMin">-4</span><span class="sliderMax">4</span>
+                      </label>
+                  </div>
+                  <h4>Scaling Matrix:</h4>
+                  <p id="scalematrix"></p>
+                  <div class="sliderScale">
+                      <input class="button-primary" type="submit" value="Apply" onclick="plotScale()">
+                      <input type="button" value="Reset" onclick="resetStuff()">
+                  </div>
+
+                  </div>
+
+              <div class="tab-pane" id="custom">
+                  <span><b>Type input:</b></span><br><br>
+                  <p id="tableInput"></p>
+                  <h4>Custom Matrix:</h4>
+                      <p id="custommatrix"></p>
+                  <div class="sliderCustom">
+                      <input class="button-primary" type="submit" value="Apply" onclick="plotCustom()">
+                      <input type="button" value="Reset" onclick="resetStuff()">
+                  </div>
+
+
+                </div>
+                <br>
+                <h4>\(|det(A)|=\,\) <span id="determinant"></span></h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+				
+				
+<script type="text/javascript" src="/assets/js/skeleton-tabs.js" ></script>
+<script type="text/javascript" src="/assets/js/numeric-1.2.6.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.3/math.min.js" ></script>
+<script type="text/javascript" src="/visuals/two_dimensional_transformations/scripts/2D.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

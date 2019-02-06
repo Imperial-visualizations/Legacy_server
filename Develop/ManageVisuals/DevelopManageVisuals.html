@@ -1,0 +1,62 @@
+
+  </div>
+</div>
+<button type="button" class="round_button" data-toggle="modal" data-target="#createVisual"><div></div></button>
+
+
+<div class="modal fade" id="createVisual" tabindex="-1" role="dialog" aria-labelledby="createVisualLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createVisualLabel">Create Visulisation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="create_a_visual">
+          <div class="form-group">
+            <label for="visual_id">Visulisation Id:</label>
+            <input type="text" class="form-control" id="visual_id" placeholder="visual_id"><small class="form-text text-muted" data-prefix="Your visualisation will have the following url<br> https://visualisations.ph.ic.ac.uk/visualisations/" id="visual_id_help_text">Your visualisation will have the following url<br>https://visualisations.ph.ic.ac.uk/visualisations/visual_id</small>
+          </div>
+          <div class="form-group">
+            <label for="collaborator_school_id">Collaborators' College Usernames:</label>
+            <div class="input-group"><input type="text" class="form-control" id="collaborator_school_id_1" placeholder="1st Collaborator's College Username(Optional)"><span class="input-group-addon"">@ic.ac.uk</span></div>
+            <div class="input-group"><input type="text" class="form-control" id="collaborator_school_id_2" placeholder="2nd Collaborator's College Username(Optional)"><span class="input-group-addon"">@ic.ac.uk</span></div>
+          </div>
+          <div class="form-group">
+              <label>Course:</label>
+              <select class="u-full-width form-control" id="course">
+                {{COURSE OPTIONS}}
+              </select>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="create_a_visual_submit">Create Visulisation <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="publishConfirmation" tabindex="-1" role="dialog" aria-labelledby="publishConfirmationLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="publishConfirmationLabel"><span class="text-warning">Warning: </span> Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="publishConfirmationContent">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="publishConfirmationCancelButton">Cancel</button>
+        <button type="button" class="btn btn-primary" id="publishConfirmationPublishButton" data-visual-id="" data-text-id="">Publish <i class="fa fa-globe" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

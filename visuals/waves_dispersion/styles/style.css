@@ -1,0 +1,30 @@
+        #graph {
+            border: 2px solid #EBEEEE;
+            box-sizing: border-box;
+            box-shadow: 1px 1px 1px 1px #EBEEEE;
+        }
+        .graphs {
+            height: 450px;
+            border: 1px solid #EBEEEE;
+            box-sizing: border-box;
+            box-shadow: 1px 1px 0px 2px #EBEEEE;
+        }
+
+        .showHideButton{
+            display: block;
+            color: #000;
+            background: #EBEEEE;
+            text-decoration: underline;
+            margin-top: 0;
+            text-align: right;
+            width: 100%;
+            border-top: 2px solid #e1e4e4;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.8em;
+        }
+
+        .characteristicsBox {
+            border-left: 3px solid #00ACD7;
+            margin-left: 10px;
+        }

@@ -1,0 +1,243 @@
+
+<div class="row">
+  <div class="col-8">
+  	<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;
+<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 text-in-code" id="visualisation_title" placeholder="Visualisation Title" >
+    &lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt; &lt;!-- Use utf-8 to decode --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&gt;
+    &lt;!-- Mobile Friendly --&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;<div id="limit-160-char" data-limit-display="0/160"><textarea class="form-control textarea-in-code" id="description" rows="3" placeholder="short description for the visualisation (within 160 chars.)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-gramm="false"></textarea></div>&quot;&gt;
+    &lt;!-- Search Engine Friendly --&gt;
+    &lt;link rel=&quot;icon&quot; href=&quot;https://www.imperial.ac.uk/T4Assets/favicon-196x196.png&quot; type=&quot;image/x-icon&quot;&gt;
+    &lt;!-- Favicon --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://ghcpuman902.github.io/styles/styles.css?v=1&quot;&gt;
+    &lt;!-- Common Style Sheet --&gt;
+    <span id="headInsert"></span>
+&lt;/head&gt;
+&lt;body&gt;
+<textarea class="form-control textarea-in-code" id="bodyHtml" rows="12" placeholder="copy and paste your HTML codes here (between the &lt;body&gt; tag, excluding your js scripts)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-gramm="false"></textarea>    <span id="bottomInsert"></span>
+&lt;/body&gt;
+&lt;/html&gt;
+	</code></pre>
+  </div>
+  <div class="col-4">
+      <div class="codeMessages">
+      <h6 id="bigTitle" class="p-2">You are editing index.html</h6><button type="button" class="btn btn-primary">Save Changes <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></div><br>
+      <div id="Options" role="tablist">
+        <div class="card">
+          <div class="card-header" role="tab" id="TitleForGeneral">
+            <h5 class="mb-0" data-toggle="collapse" href="#BodyForGeneral" aria-expanded="true" aria-controls="BodyForGeneral" data-expand-display="-">
+                General
+            </h5>
+          </div>
+          <div id="BodyForGeneral" class="collapse show" role="tabpanel" aria-labelledby="TitleForGeneral" data-parent="#Options">
+            <div class="card-body">
+            	<div class="form-check">
+          		  <label class="form-check-label">
+          		    <input class="form-check-input" id="logged" type="checkbox" value="">
+          		    <h6 class="font-weight-bold">Logged</h6>
+          		  </label>
+                <small class="form-text text-muted">If the logged option is ticked, when you upload <code>myJsFile.js</code> and <code>myJsFile_logged.js</code>, the one with the "_logged" suffix will be used instead of the one without. If there is no "_logged" version of the js file, the original one will be used.</small>
+          		</div>
+
+          		<hr>
+
+        			<h6 for="collaborator_school_id" class="font-weight-bold">Collaborators</h6>
+        			<ul class="">
+                <span id="collaborator_list">
+        			  <li class="">Jessie J (jj5656) <a class="text-danger"><i class="fa fa-user-times" aria-hidden="true"></i></li></a>
+        			  <li class="">Mark George (mg1535) <a class="text-danger"><i class="fa fa-user-times" aria-hidden="true"></i></li></a>
+                </span>
+        			  <li class=""><a class="text-primary">Add collaborator <i class="fa fa-user-plus" aria-hidden="true"></i></li></a>
+        			</ul>
+
+              <hr>
+
+              <h6 class="font-weight-bold">Upload a screenshot</h6>
+              <small  class="form-text text-muted">Picture will be shrinked down to 266x160. You can upload a GIF that loops through multiple images. </small>
+              
+              <form method="post" id='screenshotUploadForm' enctype="form-data">
+                <input type="hidden" value="" name="location" />
+                <input type="hidden" value="screenshot" name="type" />
+                <input type="file" id="screenshotChooseFileInput" name="image[]" class="inputfile" data-multiple-caption="{count} files" /><label for="screenshotChooseFileInput"  class="btn btn-outline-primary w-100 inputfile-wrapper" id="screenshotChooseFileButton">Choose files <i class="fa fa-files-o" aria-hidden="true"></i></label>
+                <input style="display:none;" type="submit" id="uploadScreenshot" /><label for="uploadScreenshot" style="display:none;" class="btn btn-primary w-100" id="screenshotUploadButton">Upload <i class="fa fa-upload" aria-hidden="true"></i></label>
+                <div class="progress"><div id="screenshotProgress" class="progress-bar" role="progressbar" style="width: 0%; height: 1px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>
+              </form>
+              <br>
+              <h6 class="font-weight-bold">Preview:</h6>
+                  <div class="card" id="previewCard">
+                    <img class="card-img-top" id="previewImg" width="100%" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22266%22%20height%3D%22160%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20266%20160%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_15e9adc4c9e%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_15e9adc4c9e%22%3E%3Crect%20width%3D%22266%22%20height%3D%22160%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2299.7578125%22%20y%3D%2286%22%3E266x160%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" style="display: block;">
+                    <div class="card-body">
+                      <h4 class="card-title" id="previewTitle">Card title</h4>
+                      <p class="card-text" id="previewDescription">This card has supporting text below as a natural lead-in to additional content.</p>
+                      <div class="dropdown">
+                      <button class="btn btn-outline-info dropdown-toggle" type="button" id="PreviewDownloadButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dowload...
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="PreviewDownloadButton">
+                        <a class="dropdown-item" href="#">Js Version</a>
+                        <a class="dropdown-item" href="#">Python Version</a>
+                        <a class="dropdown-item" href="#">Jupyter Version</a>
+                      </div>
+                      <button type="button" class="btn btn-primary">Visit ☞</button>
+                    </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="TitleForAssets">
+            <h5 class="mb-0 collapsed" data-toggle="collapse" href="#BodyForAssets" aria-expanded="false" aria-controls="BodyForAssets" data-expand-display="+">
+                Uploads
+            </h5>
+          </div>
+
+          <div id="BodyForAssets" class="collapse" role="tabpanel" aria-labelledby="TitleForAssets" data-parent="#Options">
+            <div class="card-body">
+            <h4>Directory Tree</h4>
+            <div>
+              <ul class="tree" id="directory_tree">
+              </ul>
+            </div>
+      	    <h4>For Javascript Version</h4>
+              
+              <form method="post" id='JSVUploadForm' enctype="multipart/form-data">
+                <input type="hidden" value="" name="location" />
+                <input type="hidden" value="JSV" name="type" />
+                <input type="file" id="JSVChooseFileInput" name="filess[]" class="inputfile" data-multiple-caption="{count} files" multiple/><label for="JSVChooseFileInput"  class="btn btn-outline-primary w-100 inputfile-wrapper" id="JSVChooseFileButton">Choose files <i class="fa fa-files-o" aria-hidden="true"></i></label>
+                <input style="display:none;" type="submit" id="uploadJSV" /><label for="uploadJSV" style="display:none;" class="btn btn-primary w-100" id="JSVUploadButton">Upload <i class="fa fa-upload" aria-hidden="true"></i></label>
+                <div class="progress"><div id="JSVProgress" class="progress-bar" role="progressbar" style="width: 0%; height: 1px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>
+              </form>
+      		<hr>
+      	    <h4>For Jupyter Notebook Version</h4>
+              
+              <form method="post" id='JNVUploadForm' enctype="multipart/form-data">
+                <input type="hidden" value="" name="location" />
+                <input type="hidden" value="JNV" name="type" />
+                <input type="file" id="JNVChooseFileInput" name="filess[]" class="inputfile" data-multiple-caption="{count} files" multiple/><label for="JNVChooseFileInput"  class="btn btn-outline-primary w-100 inputfile-wrapper" id="JNVChooseFileButton">Choose files <i class="fa fa-files-o" aria-hidden="true"></i></label>
+                <input style="display:none;" type="submit" id="uploadJNV" /><label for="uploadJNV" style="display:none;" class="btn btn-primary w-100" id="JNVUploadButton">Upload <i class="fa fa-upload" aria-hidden="true"></i></label>
+                <div class="progress"><div id="JNVProgress" class="progress-bar" role="progressbar" style="width: 0%; height: 1px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>
+              </form>
+      		<hr>
+      	    <h4 class="card-title">For Python Version</h4>
+              
+              <form method="post" id='PVUploadForm' enctype="multipart/form-data">
+                <input type="hidden" value="" name="location" />
+                <input type="hidden" value="PV" name="type" />
+                <input type="file" id="PVChooseFileInput" name="filess[]" class="inputfile" data-multiple-caption="{count} files" multiple/><label for="PVChooseFileInput"  class="btn btn-outline-primary w-100 inputfile-wrapper" id="PVChooseFileButton">Choose files <i class="fa fa-files-o" aria-hidden="true"></i></label>
+                <input style="display:none;" type="submit" id="uploadPV" /><label for="uploadPV" style="display:none;" class="btn btn-primary w-100" id="PVUploadButton">Upload <i class="fa fa-upload" aria-hidden="true"></i></label>
+                <div class="progress"><div id="PVProgress" class="progress-bar" role="progressbar" style="width: 0%; height: 1px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="TitleForCSS">
+            <h5 class="mb-0 collapsed" data-toggle="collapse" href="#BodyForCSS" aria-expanded="false" aria-controls="BodyForCSS" data-expand-display="+">
+                CSS
+            </h5>
+          </div>
+          <div id="BodyForCSS" class="collapse" role="tabpanel" aria-labelledby="TitleForCSS" data-parent="#Options">
+            <div class="card-body">
+              <span id="CSSLibraries">
+              <div class="form-check disabled">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="skeleton_iv" checked disabled> skeleton_iv.css (including skeleton tabs)
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="font-awesome"> font-awesome.min.css
+                </label>
+              </div>
+              </span>
+              <span id="CSSFiles">
+              <div class="form-check">
+                <label class="form-check-label font-italic">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> assets/styles.css
+                </label>
+              </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="TitleForJS">
+            <h5 class="mb-0 collapsed" data-toggle="collapse" href="#BodyForJS" aria-expanded="false" aria-controls="BodyForJS" data-expand-display="+">
+                JS
+            </h5>
+          </div>
+          <div id="BodyForJS" class="collapse" role="tabpanel" aria-labelledby="TitleForJS" data-parent="#Options">
+            <div class="card-body">
+              <span id="JSLibraries">
+              <div class="form-check disabled">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="skeleton_iv" checked disabled> jQuery <a href="https://jquery.org/">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="skeleton_iv" checked disabled> skeleton-tabs.js <a href="https://github.com/nathancahill/skeleton-tabs">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="font-awesome" checked> Plotly.js <a href="https://plot.ly/plotly-js-scientific-d3-charting-library/">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> MathJax <a href="https://www.mathjax.org/">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="font-awesome"> marked.js <a href="https://github.com/chjj/marked">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="font-awesome"> phaser.io <a href="https://phaser.io/s">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> Numeric Javascript <a href="http://www.numericjs.com/">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-weight-bold">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> mathjs <a href="http://mathjs.org/index.html">docs <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </label>
+              </div>
+              </span>
+              <span id="JSFiles">
+              <div class="form-check">
+                <label class="form-check-label font-italic">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> assets/fast_plotter.js
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-italic">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> assets/ui_control.js
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label font-italic">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2"> assets/graphic.js
+                </label>
+              </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    
+  </div>
+</div>

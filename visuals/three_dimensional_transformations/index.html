@@ -1,0 +1,205 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Three Dimensional Transformations</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content=" Done by Mangle Kuo for Physics: Mathematics (Matrices) (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				   <div class="container">
+    <div class="row">
+        <div class="six columns">
+            <h1>3D Transformations</h1>
+            <div id='graph' style="width:450px; height:450px;"></div>  
+        </div>
+        <br> 
+    <div class = "six columns">
+        <ul class="tab-nav">
+            <li><a class="button active" href="#Rotate">Rotate</a></li>
+            <li><a class="button" href="#Skew">Skew</a></li>
+            <li><a class="button" href="#Scale">Scale </a> </li>
+            </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="Rotate">
+            <h3>Rotate</h3>
+            <div>
+                <p><strong>Select Axis:</strong></p> 
+                <select id = "RotateSelect">
+                    <option value="RotXaxis">X Axis</option> 
+                    <option value="RotYaxis"> Y Axis</option> 
+                    <option value="RotZaxis">Z Axis</option> 
+                </select>
+            </div>
+            <div class="SliderRot">
+                <label class="sliderTitle">Select Angle: <span id="RotateSliderDisplay" data-unit="π radian">0π radian</span></label>
+                <label class='slider'>
+                <input id="RotateSlider" class='inputs' type ="range" value="0" min ="-2" max="2" step ="0.1" onchange="rotatematrix()" />
+                <span class="sliderMin">-2π</span><span class="sliderMax">2π</span>
+                </label>
+
+            </div>
+            <h7> This is the transformation matrix.</h7>
+            <div>
+                <table id = "rotateTable" class="matrix">
+                    <tr>
+                        <td align = "center">1</td>
+                        <td align = "center">0</td>
+                        <td align = "center">0</td>
+                    </tr>
+                    <tr>
+                        <td align = "center">0</td>
+                        <td align = "center">1</td>
+                        <td align = "center">0</td>
+                    </tr>
+                    <tr>
+                        <td align = "center">0</td>
+                        <td align = "center">0</td>
+                        <td align = "center">1</td>
+                    </tr>
+                </table>
+            </div>
+            <div><button onclick="Rotate()">Go</button></div> 
+            </div>
+            <div class="tab-pane" id="Skew">
+                <h3>Skew</h3>
+            <div>
+                <p><strong>Select Axis:</strong></p> 
+                <select id = "SkewSelect">
+                    <option value="SkewXaxis">X Axis</option> 
+                    <option value="SkewYaxis"> Y Axis</option> 
+                    <option value="SkewZaxis">Z Axis</option> 
+                </select>
+            </div>
+            <div class="sliderSkew">
+                <label class="sliderTitle">Select Angle: <span id="SkewSliderDisplay" data-unit="π radian">0π radian</span></label>
+                <label class = Slider>
+                <input id="SkewSlider" class = 'inputs' type ="range" value="0" min ="0" max="0.25" step ="0.025" onchange="skewmatrix()" />
+                <span class="sliderMin">0</span><span class="sliderMax">π/4</span>
+                </label>
+            </div>
+            <h7> This is the transformation matrix.</h7>
+            <div>
+                <table id = "skewTable" class="matrix">
+                    <tr>
+                        <td align = "center">1</td>
+                        <td align = "center">0</td>
+                        <td align = "center">0</td>
+                    </tr>
+                    <tr>
+                        <td align = "center">0</td>
+                        <td align = "center">1</td>
+                        <td align = "center">0</td>
+                    </tr>
+                    <tr>
+                        <td align = "center">0</td>
+                        <td align = "center">0</td>
+                        <td align = "center">1</td>
+                    </tr>
+                </table>
+            </div>
+            <div><button onclick = "Skew()">Go!</button></div>
+
+            </div>
+            <div class="tab-pane" id="Scale"> 
+                          <h3>Scale</h3><div>
+                <p><strong>Select Axis:</strong></p> 
+                <select id ="ScaleSelect">
+                    <option value="ScaleXaxis">X Axis</option> 
+                    <option value="ScaleYaxis"> Y Axis</option> 
+                    <option value="ScaleZaxis">Z Axis</option> 
+                    <option value="ScaleAllAxis">All Axes</option> 
+
+                </select>
+            </div>
+            <div class="sliderScale">
+                <label class="sliderTitle">Select Scale:<span id="ScaleSliderDisplay" data-unit="x">1x</span></label>
+                <label class = Slider>
+                <input id="ScaleSlider" class = 'input' type ="range" value="1" min ="0.5" max="2" step ="0.1" onchange= "scalematrix()" />
+                <span class="sliderMin">0.5</span><span class="sliderMax">2</span>
+                </label>
+            </div>
+            <h7> This is the transformation matrix.</h7>
+
+            <div>
+                <table id = "scaleTable" class="matrix">
+                    <tr>
+                        <td align = "center">1</td>
+                        <td align = "center">0</td>
+                        <td align = "center">0</td>
+                    </tr>
+                    <tr>
+                        <td align = "center">0</td>
+                        <td align = "center">1</td>
+                        <td align = "center">0</td>
+                    </tr>
+                    <tr>
+                        <td align = "center">0</td>
+                        <td align = "center">0</td>
+                        <td align = "center">1</td>
+                    </tr>
+                </table>
+            </div>
+            <div><button onclick = "Scale()">Go!</button></div>   
+            </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+<div><button onclick="graphReset('graph')">Reset</button></div>
+				
+				
+<script type="text/javascript" src="/assets/js/skeleton-tabs.js" ></script>
+<script type="text/javascript" src="/assets/js/numeric-1.2.6.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.3/math.min.js" ></script>
+<script type="text/javascript" src="/visuals/three_dimensional_transformations/scripts/CubeRotation.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

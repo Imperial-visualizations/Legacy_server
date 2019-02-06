@@ -1,0 +1,129 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Diatomic Molecule Vibration And Rotation</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content=" Done by Mangle Kuo & Robert King for Chemistry: Maths and Physics for Chemists 1 (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+<link rel="stylesheet" href="/visuals/diatomic_molecule_vibration_and_rotation/styles/style.css">
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				<div class="container">
+    <h1>Diatomic Molecule: Vibration and Rotation</h1>
+    <!--Phaser animation and KE plots & input sliders-->
+    <div class="row">
+        <div class="seven columns">
+            <div id="phaser"><span id="loadingMessage"></span></div>
+            <button id="playPauseButton">Start</button>
+            <button id="resetButton">Reset</button>
+
+            <h4 class="titleKE">Kinetic Energies</h4>
+
+            <!-- Vib KE slider -->
+            <label class="sliderTitle" style="padding-bottom: 10px">Vibrational Kinetic Energy at r<sub>0</sub>:
+                <span class="txtInputs" id="vibKEDisplay" data-change data-unit=" eV">0 eV</span>
+            </label>
+            <label class="slider">
+                <input id="vibKE" class="inputs" title="Vib KE" type="range" value="0" min="0" max="10.0" step="0.05"/>
+                <span class="sliderMin">0.00</span><span class="sliderMax">10.00</span>
+            </label>
+
+            <!-- Rot KE slider -->
+            <label class="sliderTitle" style="margin-bottom: 0">Rotational Kinetic Energy at r<sub>0</sub>:
+                <span class="txtInputs" id="rotKEDisplay" data-unit=" eV" data-change>5 eV</span>
+            </label>
+            <label class="slider">
+                <input id="rotKE" class="inputs" title="Rot KE" type="range" value="0" min="0" max="15.0" step="0.05"/>
+                <span class="sliderMin">0.00</span><span class="sliderMax">15.00</span>
+            </label>
+
+            <!-- Atom A and Atom B LJ Parameter input fields -->
+
+        </div>
+
+        <div class="five columns">
+            <div id="ScatterLJ" class="twelve columns graphs expanded" style="height: 360px;"></div>
+            <em><a for="#ScatterLJ" id="spoilerLJ" class="showHideButton" data-graph-name=" LJ potential">Show LJ potential</a></em>
+            <div id="graphE" class="twelve columns graphs expanded" style="height: 360px;"></div>
+            <em><a for="#graphE" id="spoilerEvT" class="showHideButton" data-graph-name=" Energy vs Time">Show Energy vs Time</sub></a></em>
+        </div>
+    </div>
+
+    <div class="row" id="advanced" style="display: none">
+        <div class="three columns">
+            <span>dT = </span><a id="dT" data-change data-unit=" s" title="dT">0.015</a>
+        </div>
+        <br>
+         <div class="row">
+                <div class="one-half column">
+                    <h5 class="titleAtomA">Atom A</h5>
+                    <span>&sigma; = </span><a id="s1" data-change title="&sigma;" data-unit=" nm">2 nm</a>
+                    <br>
+                    <span>&epsilon; = </span><a id="e1" data-change title="&epsilon;" data-unit=" eV">10 eV</a>
+                </div>
+                <div class="one-half column">
+                    <h5 class="titleAtomB">Atom B</h5>
+                    <span>&sigma; = </span><a id="s2" data-change data-unit=" nm" title="&sigma;">2 nm</a>
+                    <br>
+                    <span>&epsilon; = </span><a id="e2" data-change data-unit=" eV" title="&epsilon;">10 eV</a>
+                </div>
+            </div>
+
+    </div>
+    <em><a for="#advanced" id="advSettings" class="showHideButton" data-graph-name=" Advanced Settings">Show Advanced Settings</a></em>
+</div>
+				
+				
+<script type="text/javascript" src="/assets/js/phaser.min.js" ></script>
+<script type="text/javascript" src="/visuals/diatomic_molecule_vibration_and_rotation/scripts/a_vecops.js"></script>
+<script type="text/javascript" src="/visuals/diatomic_molecule_vibration_and_rotation/scripts/b_diatomic.js"></script>
+<script type="text/javascript" src="/visuals/diatomic_molecule_vibration_and_rotation/scripts/c_graphics.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

@@ -1,0 +1,164 @@
+<!doctype html>
+				<html>
+				<head>
+				    <title>Liner Algebra Sphere</title>
+				    <meta charset="utf-8"> <!-- Use utf-8 to decode -->
+				    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				    <!-- Mobile Friendly -->
+
+				    <meta name="description" content="This demonstration shows some 3D Matrix transformation that's projected onto a sphere, and how commutation sometimes is not obvious in 3D transformation. Done by Mangle Kuo for Physics: Mathematics (Matrices) (Y1)"><!-- Search Engine Friendly -->
+
+				    <link rel="icon" href="https://www.imperial.ac.uk/T4Assets/favicon-196x196.png" type="image/x-icon">
+				    <!-- Favicon -->
+<link rel="stylesheet" href="https://ghcpuman902.github.io/styles/styles.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js" ></script>
+				    <!-- Global site tag (gtag.js) - Google Analytics -->
+					<script async src="https://www.googletagmanager.com/gtag/js?id=UA-42929523-2"></script>
+					<script>
+					  window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+
+					  gtag('config', 'UA-42929523-2');
+					</script>
+
+				</head>
+				<body>
+				   <div class="container">
+        <div class="row">
+            <!-- Graph -->
+            <div class="six columns">
+                <h1>On a Sphere:</h1>
+                <div id="graph" style="width:450px; height:450px;"></div>
+                <div id="frameSlider">
+                    <label class="sliderTitle">Frame #:
+                        <span id="commuteAnimateSliderDisplay" data-unit="">1</span>
+                    </label>
+                    <label class="slider">
+                        <input id="commuteAnimateSlider" class="inputs" type="range" value="0" min="0" max="38" step="1"/>
+                        <span class="sliderMin">0</span><span class="sliderMax">38</span>
+                    </label>
+                </div>
+            </div>
+
+            <!--Bottons-->
+            <div class="six columns">
+                <!--Main Options-->
+                <ul class="tab-nav">
+                    <li><a class="button active" href="#rotate">Rotate</a></li>
+                    <li><a class="button" href="#reflect">Reflect</a></li>
+                    <!--<li><a class="button" href="#scale">Scale</a></li>-->
+                </ul>
+
+                <div class="tab-content">
+                    <!--Rotation-->
+                    <div class="tab-pane active" id="rotate">
+                        <!--Rotation--> <!--x = 1, y = 2, z = 3-->
+                        <div class="rotate3D">
+                            <strong>Select Axis: </strong>
+                            <select id="rotateSelect">
+                                <option value="rotateX">X Axis</option>
+                                <option value="rotateY">Y Axis</option>
+                                <option value="rotateZ">Z Axis</option>
+                            </select>
+                            <label class="sliderTitle">Angle:&nbsp;
+                                <span id="rotatorDisplayA1" data-unit=" π rad">(1/4)π rad</span>&nbsp;or&nbsp;
+                                <span id="rotatorDisplayA2" data-unit="º">45º</span>
+                            </label>
+                            <label class="slider">
+                                <input id="rotator" class="inputs" type="range" value="0.25" min="-2" max="2" step="0.125"/>
+                                <span class="sliderMin">-2π</span><span class="sliderMax">2π</span>
+                            </label>
+                        </div>
+                        <!--Commute?-->
+                        <div class="rotateCommute">
+                            <h3 style="border-left: solid 5px rgb(182,109,255); padding-left: 8px;">Rotation A</h3>
+                            <label class="sliderTitle">Rotation about x-axis:&nbsp;
+                                <span id="rotator1DisplayA1" data-unit="π rad">(1/2)π rad</span>&nbsp;or&nbsp;
+                                <span id="rotator1DisplayA2" data-unit="º">90º</span>
+                            </label>
+                            <label class="slider">
+                                <input id="rotator1" class="inputs" type="range" value="0.5" min="-2" max="2" step="0.125"/>
+                                <span class="sliderMin">-2π</span><span class="sliderMax">2π</span>
+                            </label>
+
+                            <h3 style="border-left: solid 5px rgb(219,209,0); padding-left: 8px;">Rotation B</h3>
+                            <label class="sliderTitle">Rotation about y-axis:&nbsp;
+                                <span id="rotator2DisplayA1" data-unit="π rad">(1/2)π rad</span>&nbsp;or&nbsp;
+                                <span id="rotator2DisplayA2" data-unit="º">90º</span>
+                            </label>
+                            <label class="slider">
+                                <input id="rotator2" class="inputs" type="range" value="0.5" min="-2" max="2" step="0.125"/>
+                                <span class="sliderMin">-2π</span><span class="sliderMax">2π</span>
+                            </label>
+
+                            <input id="commuteAnimate" class="button-primary" type="submit" value="Play">
+                            <!--<input type="button" value="Reset", onclick="reset()">-->
+                            <h3>&#x25B3;: <font style="color:rgb(182,109,255);">A</font> &#8594; <font style="color:rgb(219,209,0)">B</font></h3>
+                            <h3>&#x25B2;: <font style="color:rgb(219,209,0)">B</font> &#8594; <font style="color:rgb(182,109,255);">A</font></h3>
+                            <input id="hideCommute" type="button" value="&#x21B2; Go Back">
+                        </div>
+                    </div>
+                    <!--Reflection-->
+                    <div class="tab-pane" id="reflect">
+                        <strong>Select Plane: </strong>
+                        <select id="reflectSelect">
+                            <option value="reflectX">X = 0</option>
+                            <option value="reflectY">Y = 0</option>
+                            <option value="reflectZ">Z = 0</option>
+                        </select>
+                    </div>
+
+                    <div class="playButtons">
+                        <input id="animate" class="button-primary" type="submit" value="Play">
+                        <input id="undo" type="button" value="&#10554; Undo">
+                        <input id="reset" type="button" value="Reset to (-2,-2,2)">
+
+                        <h3>Transformation: </h3>
+                        <label>Current Vector = M x Previous Vector</label>
+                        <p id="matrixDisplay"></p>
+                    </div>
+                    <input id="showCommute" type="button" value="Commute?">
+                </div>
+            </div>
+        </div>
+    </div>
+				
+				
+<script type="text/javascript" src="/assets/js/numeric-1.2.6.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.3/math.min.js" ></script>
+<script type="text/javascript" src="/visuals/liner_algebra_sphere/scripts/animate.js"></script>
+<script type="text/javascript" src="/visuals/liner_algebra_sphere/scripts/objects.js"></script>
+<script type="text/javascript" src="/visuals/liner_algebra_sphere/scripts/sphere.js"></script>
+				<script>  
+					var version = detectIE();
+					if (version === false || version >= 12) {
+					} else {
+					alert("It's interesting that you are still using IE "+version+"...\n we suggest you try modern browsers like Chrome.");
+					}
+					function detectIE() {
+					var ua = window.navigator.userAgent;
+					var msie = ua.indexOf("MSIE ");
+					if (msie > 0) {
+					// IE 10 or older => return version number
+					return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+					}
+					var trident = ua.indexOf("Trident/");
+					if (trident > 0) {
+					// IE 11 => return version number
+					var rv = ua.indexOf("rv:");
+					return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+					}
+					var edge = ua.indexOf("Edge/");
+					if (edge > 0) {
+					// Edge (IE 12+) => return version number
+					return parseInt(ua.substring(edge + 5, ua.indexOf(".", edge)), 10);
+					}
+					// other browser
+					return false;
+					}
+				</script>
+				</body>
+				</html>
+				

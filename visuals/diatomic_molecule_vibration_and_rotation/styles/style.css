@@ -1,0 +1,43 @@
+
+        input[type=range] {
+        }
+        #phaser{
+            margin-bottom: 8px;
+        }
+        .titleKE {
+            padding-left: 8px;
+            font-weight:400;
+            border-left: 8px solid #02893B;
+        }
+
+        .titleAtomA {
+            padding-left: 4px;
+            font-weight:200;
+            border-left: 4px solid #006EAF;
+        }
+
+        .titleAtomB {
+            padding-left: 4px;
+            font-weight:200;
+            border-left: 4px solid #9F004E;
+        }
+
+        .graphs{
+            height: 300px;
+            border: 1px solid #EBEEEE;
+            box-sizing: border-box;
+            box-shadow: 1px 1px 0px 2px #EBEEEE;
+        }
+        .showHideButton{
+            display: block;
+            color: #000;
+            background: #EBEEEE;
+            text-decoration: underline;
+            margin-top: 0;
+            text-align: right;
+            width: 100%;
+            border-top: 2px solid #e1e4e4;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.8em;
+        }
